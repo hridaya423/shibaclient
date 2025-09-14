@@ -73,7 +73,7 @@ export default function Home() {
             <div className="flex justify-center gap-4 mb-8">
               <Link
                 href="/games"
-                className="px-6 py-3 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors font-medium flex items-center gap-2 shadow-lg"
+                className="px-6 py-3 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors font-medium flex items-center gap-2 shadow-lg mx-auto"
               >
                 View My Games
               </Link>
