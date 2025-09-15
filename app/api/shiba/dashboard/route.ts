@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
           signal: controller.signal,
         }),
         
-        fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/analytics`, {
+        fetch(`${process.env.NEXT_PUBLIC_BASE_URL || (typeof window !== 'undefined' ? window.location.origin : 'https://shiba.hridya.tech')}/api/analytics`, {
           method: 'GET',
           headers: { 'Content-Type': 'application/json' },
           signal: controller.signal,
@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
       let cachetData = null;
       if (profileData?.profile?.slackId) {
         try {
-          const cachetResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/cachet/user`, {
+          const cachetResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || (typeof window !== 'undefined' ? window.location.origin : 'https://shiba.hridya.tech')}/api/cachet/user`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ slackId: profileData.profile.slackId }),

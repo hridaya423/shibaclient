@@ -31,17 +31,30 @@ export async function GET() {
     ]);
 
     clearTimeout(timeoutId);
+  
+    const responses = [
+      { name: 'funnel', response: funnelResponse },
+      { name: 'hours', response: hoursResponse },
+      { name: 'backlog', response: backlogResponse },
+      { name: 'signup', response: signupResponse },
+      { name: 'activeUsers', response: activeUsersResponse }
+    ];
 
-    if (!funnelResponse.ok || !hoursResponse.ok || !backlogResponse.ok || !signupResponse.ok || !activeUsersResponse.ok) {
-      throw new Error('One or more API endpoints failed');
+    const failedEndpoints = responses.filter(r => !r.response.ok);
+    if (failedEndpoints.length > 0) {
+      console.warn('Some analytics endpoints failed:', failedEndpoints.map(r => r.name));
+    }
+
+    if (failedEndpoints.length === responses.length) {
+      throw new Error('All analytics endpoints failed');
     }
 
     const [funnelData, hoursPerDay, reviewBacklog, signupData, dailyActiveUsers] = await Promise.all([
-      funnelResponse.json(),
-      hoursResponse.json(),
-      backlogResponse.json(),
-      signupResponse.json(),
-      activeUsersResponse.json(),
+      funnelResponse.ok ? funnelResponse.json() : null,
+      hoursResponse.ok ? hoursResponse.json() : null,
+      backlogResponse.ok ? backlogResponse.json() : null,
+      signupResponse.ok ? signupResponse.json() : null,
+      activeUsersResponse.ok ? activeUsersResponse.json() : null,
     ]);
 
     const analytics: ShibaAnalytics = {
