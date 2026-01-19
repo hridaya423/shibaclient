@@ -14,7 +14,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.562.0",
-    "motion": "^12.26.1",
+    "motion": "^12.27.1",
     "next": "16.1.3",
     "ogl": "^1.0.11",
     "postprocessing": "^6.38.2",
