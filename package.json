@@ -20,7 +20,7 @@
     "postprocessing": "^6.38.2",
     "react": "19.2.4",
     "react-chartjs-2": "^5.3.1",
-    "react-dom": "19.2.3",
+    "react-dom": "19.2.4",
     "recharts": "^3.7.0",
     "tailwind-merge": "^3.4.0",
     "three": "^0.182.0"
